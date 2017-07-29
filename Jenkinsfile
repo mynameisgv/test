@@ -1,5 +1,5 @@
 pipeline {
-  agent any
+  agent none
   stages {
     stage('Example') {
       steps {
@@ -23,10 +23,10 @@ pipeline {
         )
       }
     }
-    stage('') {
+    stage('error') {
       steps {
         parallel(
-          "": {
+          "error": {
             echo 'hello'
             
           },
