@@ -1,7 +1,6 @@
 pipeline {
     agent any
-    for (i in [ 'a', 'b', 'c' ,'d', 'e', 'f','g', 'j', 'k'  ]) {
-    stages {
+     stages {
         stage('Example') {
             steps {
                 echo 'Hello World'
@@ -14,6 +13,5 @@ pipeline {
                 }
             }
         }
-    }
-    }
+     }
 }
