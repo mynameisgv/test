@@ -5,7 +5,6 @@ pipeline {
       steps {
         parallel(
           "Example": {
-            echo 'Hello World'
             sh 'echo `date`'
             
           },
