@@ -6,17 +6,11 @@ pipeline {
         parallel(
           "Example": {
             echo 'Hello World'
-            script {
-              def browsers = ['chrome', 'firefox']
-              for (int i = 0; i < browsers.size(); ++i) {
-                echo "Testing the ${browsers[i]} browser"
-              }
-            }
-            
+            sh 'echo `date`'
             
           },
           "Test": {
-            sh '''echo "Hello"
+            sh '''echo `date`
 '''
             
           }
