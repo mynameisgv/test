@@ -5,12 +5,12 @@ pipeline {
       steps {
         parallel(
           "Example": {
-            milestone label: 'test'
+            milestone 1
             sh 'echo `date`'
             
           },
           "Test": {
-            milestone label: 'test'
+            milestone 2
             sh '''echo `date`
 '''
             
