@@ -4,12 +4,12 @@ pipeline {
     stage('Example') {
       steps {
         parallel(
-          "Example": {
+          "Drone Approved?": {
             milestone 1
             sh 'echo `date`'
             
           },
-          "Test": {
+          "E2E Approved": {
             milestone 2
             sh '''echo `date`
 '''
@@ -21,11 +21,11 @@ pipeline {
     stage('error') {
       steps {
         parallel(
-          "error": {
+          "Deploy": {
             echo 'hello'
             
           },
-          "bhadri": {
+          "Disable Rotation": {
             sh '''echo "hello"
 '''
             
