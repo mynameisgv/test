@@ -1,47 +1,18 @@
 pipeline {
-  agent any
-  stages {
-    stage('Example') {
-      steps {
-        parallel(
-          "Drone Approved?": {
-            milestone 1
-            sh 'echo `date`'
-            
-          },
-          "E2E Approved": {
-            milestone 2
-            sh '''echo `date`
-'''
-            
-          }
-        )
-      }
+    agent any
+    stages {
+        stage('Example') {
+            input {
+                message "Should we continue?"
+                ok "Yes, we should."
+                submitter "alice,bob"
+                parameters {
+                    string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+                }
+            }
+            steps {
+                echo "Hello, ${PERSON}, nice to meet you."
+            }
+        }
     }
-    stage('error') {
-      steps {
-        parallel(
-          "Deploy": {
-            echo 'hello'
-            
-          },
-          "Disable Rotation": {
-            sh '''echo "hello"
-'''
-            
-          }
-        )
-      }
-    }
-    stage('Tet') {
-      steps {
-        sleep 30
-      }
-    }
-    stage('Done') {
-      steps {
-        sh 'echo hello'
-      }
-    }
-  }
 }
